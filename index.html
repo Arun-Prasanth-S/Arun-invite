@@ -4,113 +4,175 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Arun &amp; Nikithaa — Wedding</title>
-  <meta name="description" content="Wedding reception of Arun Prasanth &amp; Nikithaa" />
-  <meta name="theme-color" content="#0a0a0a" />
+  <meta name="theme-color" content="#0a0507" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💍</text></svg>" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-  <!-- Preloader -->
-  <div id="preloader">
-    <div class="pre-monogram">A <span>&amp;</span> N</div>
-    <div class="pre-line"><div class="pre-fill"></div></div>
+  <!-- ===== INTRO / PRELOADER ===== -->
+  <div id="intro">
+    <div class="intro-aurora"></div>
+    <div class="intro-content">
+      <div class="intro-ring">
+        <svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="85" class="ring-spin"/><circle cx="100" cy="100" r="75" class="ring-spin-r"/></svg>
+      </div>
+      <div class="intro-letters" id="intro-letters">
+        <span>A</span><span class="il-amp">&amp;</span><span>N</span>
+      </div>
+      <div class="intro-tagline" id="intro-tag">Wedding Invitation</div>
+      <div class="intro-progress"><div class="intro-bar" id="intro-bar"></div></div>
+    </div>
   </div>
 
-  <!-- Floating Petals Canvas -->
-  <canvas id="petals"></canvas>
+  <!-- ===== BACKGROUND LAYERS (persist behind all screens) ===== -->
+  <div class="bg-fixed">
+    <div class="aurora aurora-1"></div>
+    <div class="aurora aurora-2"></div>
+    <div class="aurora aurora-3"></div>
+    <canvas id="cvs"></canvas>
+    <div class="grain"></div>
+  </div>
 
-  <!-- ===== SCREEN 1: HERO ===== -->
-  <section class="screen hero" id="s-hero">
-    <div class="hero-mesh"></div>
-    <div class="hero-inner">
-      <div class="mono-badge anim" data-a="fade" data-d="0.4">
-        <svg viewBox="0 0 120 120" class="mono-ring"><circle cx="60" cy="60" r="55" /></svg>
-        <span>A <em>&amp;</em> N</span>
-      </div>
-      <p class="sub-cap anim" data-a="fade" data-d="0.7">With the blessings of family &amp; the Almighty</p>
-      <h1 class="name anim" data-a="up" data-d="0.9">Arun Prasanth</h1>
-      <div class="amp-script anim" data-a="scale" data-d="1.1">&amp;</div>
-      <h1 class="name n anim" data-a="up" data-d="1.3">Nikithaa</h1>
-      <p class="invite-line anim" data-a="fade" data-d="1.6">invite you to their</p>
-      <h2 class="event-tag anim" data-a="up" data-d="1.8">Wedding Reception</h2>
-      <div class="hero-date anim" data-a="fade" data-d="2.0">
-        <span class="date-pill">Mon, 24<sup>th</sup> Aug</span>
-        <span class="date-dot"></span>
-        <span class="date-pill">11:00 AM</span>
-      </div>
-      <button class="scroll-cta anim" data-a="fade" data-d="2.3" onclick="document.getElementById('s-countdown').scrollIntoView({behavior:'smooth'})">
-        <span>Scroll to Explore</span>
-        <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor" stroke-width="2" fill="none"/></svg>
-      </button>
-    </div>
-  </section>
+  <!-- ===== PAGE WRAPPER ===== -->
+  <main id="main" class="main hidden">
 
-  <!-- ===== SCREEN 2: COUNTDOWN ===== -->
-  <section class="screen countdown-screen" id="s-countdown">
-    <div class="screen-inner">
-      <h2 class="stitle anim" data-a="up">Save the Date</h2>
-      <div class="cd-grid anim" data-a="scale" data-d="0.3">
-        <div class="cd-cell"><span id="cd-d">00</span><small>Days</small></div>
-        <div class="cd-sep">:</div>
-        <div class="cd-cell"><span id="cd-h">00</span><small>Hours</small></div>
-        <div class="cd-sep">:</div>
-        <div class="cd-cell"><span id="cd-m">00</span><small>Min</small></div>
-        <div class="cd-sep">:</div>
-        <div class="cd-cell"><span id="cd-s">00</span><small>Sec</small></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== SCREEN 3: COUPLE ===== -->
-  <section class="screen couple-screen" id="s-couple">
-    <div class="screen-inner">
-      <div class="cp-card anim" data-a="left">
-        <span class="cp-tag">The Groom</span>
-        <h3>Arun Prasanth S</h3>
-      </div>
-      <div class="cp-weds anim" data-a="scale" data-d="0.2">
-        <span>weds</span>
-      </div>
-      <div class="cp-card anim" data-a="right">
-        <span class="cp-tag">The Bride</span>
-        <h3>Kamala Sharadha R</h3>
-        <p class="cp-aka">(A) Nikithaa</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== SCREEN 4: VENUE ===== -->
-  <section class="screen venue-screen" id="s-venue">
-    <div class="screen-inner">
-      <h2 class="stitle anim" data-a="up">Venue</h2>
-      <div class="v-card anim" data-a="up" data-d="0.2">
-        <div class="v-pin">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+    <!-- SCREEN 1 — HERO -->
+    <section class="scr" id="scr-hero">
+      <div class="scr-pad">
+        <p class="hero-bless anim" data-a="fade" data-d=".2">
+          <span class="char">W</span><span class="char">i</span><span class="char">t</span><span class="char">h</span><span class="char">&nbsp;</span><span class="char">t</span><span class="char">h</span><span class="char">e</span><span class="char">&nbsp;</span><span class="char">b</span><span class="char">l</span><span class="char">e</span><span class="char">s</span><span class="char">s</span><span class="char">i</span><span class="char">n</span><span class="char">g</span><span class="char">s</span><span class="char">&nbsp;</span><span class="char">o</span><span class="char">f</span><span class="char">&nbsp;</span><span class="char">f</span><span class="char">a</span><span class="char">m</span><span class="char">i</span><span class="char">l</span><span class="char">y</span>
+        </p>
+        <h1 class="hero-name anim" data-a="up" data-d=".5">Arun Prasanth</h1>
+        <div class="hero-amp anim" data-a="scale" data-d=".8">
+          <div class="glow-ring"></div>
+          <span>&amp;</span>
         </div>
-        <h3>Ponna Gounder Kalyana Mandapam</h3>
-        <p>J495+JR11, Sandaiper,<br>Kondalampatti, Salem,<br>Tamil Nadu 636010</p>
-        <div class="v-time">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-          Monday, 24<sup>th</sup> Aug &middot; 11:00 AM
+        <h1 class="hero-name anim" data-a="up" data-d="1.0">Nikithaa</h1>
+        <div class="hero-line anim" data-a="width" data-d="1.3"></div>
+        <p class="hero-invite anim" data-a="fade" data-d="1.5">invite you to their</p>
+        <h2 class="hero-event anim" data-a="up" data-d="1.7">
+          <span class="char">W</span><span class="char">E</span><span class="char">D</span><span class="char">D</span><span class="char">I</span><span class="char">N</span><span class="char">G</span><span class="char">&nbsp;</span><span class="char">R</span><span class="char">E</span><span class="char">C</span><span class="char">E</span><span class="char">P</span><span class="char">T</span><span class="char">I</span><span class="char">O</span><span class="char">N</span>
+        </h2>
+        <div class="hero-pills anim" data-a="fade" data-d="2.0">
+          <span class="pill glow-border">Mon, 24<sup>th</sup> Aug</span>
+          <span class="pill-dot"></span>
+          <span class="pill glow-border">11:00 AM</span>
         </div>
-        <a class="v-btn" href="https://maps.google.com/?q=Ponna+Gounder+Kalyana+Mandapam+Kondalampatti+Salem" target="_blank" rel="noopener">
-          Open in Maps
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-        </a>
+        <button class="hero-cta anim" data-a="scale" data-d="2.3" onclick="document.getElementById('scr-cd').scrollIntoView({behavior:'smooth'})">
+          <span>Explore</span>
+          <div class="cta-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div>
+        </button>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ===== SCREEN 5: CLOSING ===== -->
-  <section class="screen close-screen" id="s-close">
-    <div class="hero-mesh"></div>
-    <div class="screen-inner close-inner">
-      <p class="close-bless anim" data-a="fade">Your blessings and presence will make our day truly special.</p>
-      <h3 class="close-sign anim" data-a="up" data-d="0.3">&mdash; With love, <span>Arun</span> &amp; <span>Nikithaa</span></h3>
-      <div class="close-hearts anim" data-a="scale" data-d="0.6">&#10084; &#10084; &#10084;</div>
-    </div>
-  </section>
+    <!-- SCREEN 2 — COUNTDOWN -->
+    <section class="scr" id="scr-cd">
+      <div class="scr-pad">
+        <h2 class="sec-title anim" data-a="up">
+          <span class="char">S</span><span class="char">A</span><span class="char">V</span><span class="char">E</span><span class="char">&nbsp;</span><span class="char">T</span><span class="char">H</span><span class="char">E</span><span class="char">&nbsp;</span><span class="char">D</span><span class="char">A</span><span class="char">T</span><span class="char">E</span>
+        </h2>
+        <div class="cd anim" data-a="scale" data-d=".3">
+          <div class="cd-box">
+            <div class="cd-num" id="cd-d">00</div>
+            <div class="cd-lbl">Days</div>
+            <div class="cd-glow"></div>
+          </div>
+          <div class="cd-colon">:</div>
+          <div class="cd-box">
+            <div class="cd-num" id="cd-h">00</div>
+            <div class="cd-lbl">Hours</div>
+            <div class="cd-glow"></div>
+          </div>
+          <div class="cd-colon">:</div>
+          <div class="cd-box">
+            <div class="cd-num" id="cd-m">00</div>
+            <div class="cd-lbl">Min</div>
+            <div class="cd-glow"></div>
+          </div>
+          <div class="cd-colon">:</div>
+          <div class="cd-box">
+            <div class="cd-num" id="cd-s">00</div>
+            <div class="cd-lbl">Sec</div>
+            <div class="cd-glow"></div>
+          </div>
+        </div>
+        <div class="cd-sub anim" data-a="fade" data-d=".6">until we celebrate</div>
+      </div>
+    </section>
+
+    <!-- SCREEN 3 — COUPLE -->
+    <section class="scr" id="scr-couple">
+      <div class="scr-pad">
+        <div class="cp-row">
+          <div class="cp-card anim" data-a="left" data-d=".2">
+            <div class="cp-glow"></div>
+            <div class="cp-shine"></div>
+            <div class="cp-label">The Groom</div>
+            <h3 class="cp-name">Arun Prasanth S</h3>
+            <div class="cp-line"></div>
+          </div>
+          <div class="cp-badge anim" data-a="scale" data-d=".5">
+            <div class="cp-badge-ring"></div>
+            <span>weds</span>
+          </div>
+          <div class="cp-card anim" data-a="right" data-d=".2">
+            <div class="cp-glow"></div>
+            <div class="cp-shine"></div>
+            <div class="cp-label">The Bride</div>
+            <h3 class="cp-name">Kamala Sharadha R</h3>
+            <p class="cp-aka">(A) Nikithaa</p>
+            <div class="cp-line"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 4 — VENUE -->
+    <section class="scr" id="scr-venue">
+      <div class="scr-pad">
+        <h2 class="sec-title anim" data-a="up">Venue</h2>
+        <div class="vn-card anim" data-a="up" data-d=".2">
+          <div class="vn-glow"></div>
+          <div class="vn-shine"></div>
+          <div class="vn-pin">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          </div>
+          <h3 class="vn-name">Ponna Gounder<br>Kalyana Mandapam</h3>
+          <p class="vn-addr">J495+JR11, Sandaiper,<br>Kondalampatti, Salem,<br>Tamil Nadu 636010</p>
+          <div class="vn-time">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <span>Monday, 24<sup>th</sup> Aug · 11 AM</span>
+          </div>
+          <a class="vn-btn glow-border" href="https://maps.google.com/?q=Ponna+Gounder+Kalyana+Mandapam+Kondalampatti+Salem" target="_blank" rel="noopener">
+            Open in Maps
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 5 — CLOSING -->
+    <section class="scr" id="scr-close">
+      <div class="scr-pad close-pad">
+        <div class="close-ornament anim" data-a="scale">
+          <svg viewBox="0 0 200 40"><path d="M10 20Q50 5 100 20Q150 35 190 20" stroke="currentColor" fill="none" stroke-width="1" opacity=".4"/></svg>
+        </div>
+        <p class="close-text anim" data-a="fade" data-d=".3">Your blessings &amp; presence<br>will make our day truly special</p>
+        <div class="close-sig anim" data-a="up" data-d=".6">
+          <span class="sig-dash">&mdash;</span>
+          <h3>With love,</h3>
+          <h2><span class="glow-text">Arun</span> &amp; <span class="glow-text">Nikithaa</span></h2>
+        </div>
+        <div class="close-hearts anim" data-a="scale" data-d=".9">
+          <span class="heart">&#10084;</span>
+          <span class="heart lg">&#10084;</span>
+          <span class="heart">&#10084;</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
 
   <script src="js/main.js"></script>
 </body>
