@@ -24,7 +24,6 @@
 
 html{
   scroll-behavior:smooth;
-  scroll-snap-type:y mandatory;
   overflow-x:hidden;
   font-size:16px;
   background:var(--bg);
@@ -189,20 +188,19 @@ button{border:none;background:none;color:inherit;font:inherit;cursor:pointer}
    ======================================== */
 .scr{
   position:relative;
-  min-height:100vh;min-height:100dvh;
   display:flex;align-items:center;justify-content:center;
-  scroll-snap-align:start;
   overflow:hidden;
+}
+.scr:first-child{
+  padding-top:clamp(1.5rem,5vh,2.5rem);
 }
 .scr-pad{
   width:100%;max-width:440px;
   margin:0 auto;
-  padding:1.8rem 1.4rem;
+  padding:.8rem 1.4rem;
   display:flex;flex-direction:column;align-items:center;
   text-align:center;
-  gap:.2rem;
-  justify-content:center;
-  min-height:100vh;min-height:100dvh;
+  gap:.15rem;
 }
 
 /* ========================================
@@ -328,7 +326,7 @@ button{border:none;background:none;color:inherit;font:inherit;cursor:pointer}
   font-weight:400;
   font-size:clamp(1.3rem,4.5vw,1.8rem);
   letter-spacing:.15em;text-transform:uppercase;
-  color:var(--gold2);margin-bottom:1.2rem;
+  color:var(--gold2);margin-bottom:.6rem;
   display:flex;flex-wrap:wrap;justify-content:center;
   text-shadow:0 0 30px rgba(212,168,92,.2);
 }
@@ -588,7 +586,7 @@ button{border:none;background:none;color:inherit;font:inherit;cursor:pointer}
    RESPONSIVE
    ======================================== */
 @media(min-width:768px){
-  .scr-pad{max-width:520px;padding:3rem 2rem}
+  .scr-pad{max-width:520px;padding:1rem 2rem}
   .cp-row{flex-direction:row;justify-content:center;flex-wrap:wrap}
   .cp-card{max-width:240px}
 }
@@ -598,6 +596,6 @@ button{border:none;background:none;color:inherit;font:inherit;cursor:pointer}
     animation-duration:.01ms!important;
     transition-duration:.01ms!important;
   }
-  html{scroll-snap-type:none}
+  html{scroll-behavior:auto}
   .aurora{display:none}
 }
